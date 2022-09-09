@@ -9,11 +9,4 @@ export class AppComponent {
   title = 'Ecycle-Tracker';
   
 
-   logtog: boolean =true;
-  
-  logout(){
-    localStorage.setItem("user","");
-    localStorage.setItem("token","");
-    this.logtog = false;
-  }
 }

@@ -5,5 +5,6 @@ export interface user{
     name: string|null,
     rollno: string|null,
     branch: string|null,
-    cycleid: string|null
+    cycleid: string|null,
+    role: string|null
 }

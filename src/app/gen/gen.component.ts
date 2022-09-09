@@ -22,34 +22,17 @@ export class GenComponent implements OnInit {
   emailid: string  | null = localStorage.getItem("email");
   cycleqr: string |null = localStorage.getItem("cycleid");
   cyldtl: cycle[]=[];
-  usr: user= {_id:localStorage.getItem("_id"),email:this.emailid,name:this.name,rollno: this.rollno,branch:this.branch,password:"",cycleid:this.cycleqr}
+  usr: user= {_id:localStorage.getItem("_id"),email:this.emailid,name:this.name,rollno: this.rollno,branch:this.branch,password:"",cycleid:this.cycleqr,role: ""}
   togglescn(){
     this.scn=!this.scn;
   }
-//  cyldtl: any;
   cyl:cycle={_id:"",cycleid:"",status:"",stdid:""};
 
-  // cyldetails(item: string)
-  // {
-    
-
-  //   this.addqr(item);
-  // }
 
   addqr(item: string)
   {
-      
-
-      // const cyl = this.cyldtl[0];
-      // if(this.cycl.status=="rented")
-      // {
-      //   alert("This cycle is already rented");
-      // }
-      // this.cyl = this.cyldtl[0];
-      
       this.service.details(item).subscribe((res)=>{
-        this.cyldtl=res as cycle[];
-        this.cyl = this.cyldtl[0];
+        this.cyl=res as cycle;
         if(this.cyl.status=="")
         {
           this.cycleqr=item;
@@ -76,6 +59,5 @@ export class GenComponent implements OnInit {
   logout(){
     localStorage.setItem("user","");
     localStorage.setItem("token","");
-    // this.logtog = false;
   }
 }

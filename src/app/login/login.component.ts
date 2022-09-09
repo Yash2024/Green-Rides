@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  usr : user = {_id:"",email:"",password:"",name:"",rollno:"",branch:"",cycleid:""};
+  usr : user = {_id:"",email:"",password:"",name:"",rollno:"",branch:"",cycleid:"",role:""};
   showPassword: boolean = false;
 
   myFunction(){
@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("branch", res.branch);
         localStorage.setItem("cycleid", res.cycleid);
         localStorage.setItem("email", res.email);
-        if(res.email==="admin@test.com")
+        localStorage.setItem("role",res.role);
+        if(res.role==="guard")
         {
           this.router.navigate(['admin']);
         }
