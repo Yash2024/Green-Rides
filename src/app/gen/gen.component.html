@@ -1,0 +1,62 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          <div class="container">
+            <a class="navbar-brand" style="font-size: 30px;">ECycle Renter</a>
+            <!-- <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <!-- <div class="navbar-collapse collapse" id="navbarResponsive" > -->
+              <ul class="navbar-nav ms-auto" >
+                <li  class="nav-item">
+                  <a class="nav-link" (click)="logout()" routerLink="/login" ><b>logOut</b></a>
+                </li>
+              </ul>
+            <!-- </div> -->
+          </div>
+        </nav>
+        <br>
+        <br>
+        <br>
+<div>
+
+    
+    <h1>User Details</h1>
+    <table border="2" mdbTable class="tab">
+        <thead class="black white-text">
+        <tr style="font-size: 25px;">
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Branch</th>
+            <th>Student Id</th>
+            <!-- <th *ngIf="cycleqr">Cycle Id</th> -->
+        </tr>
+    </thead>
+        <tr mdbTableCol>
+            <td>{{name}}</td>
+          <td>{{rollno}}</td>
+          <td>{{branch}}</td>
+          <td>{{emailid}}</td>
+          <!-- <td *ngIf="cycleqr">{{cycleqr}}</td> -->
+          </tr>
+        <br>
+        <br>
+    </table>
+     
+    
+    <p *ngIf="cycleqr"> Cycle Id: {{cycleqr}}<p>
+    <button class="btn first" *ngIf="!cycleqr"  (click)="togglescn()">Rent a Cycle</button><br>
+    <!-- <button *ngIf="cycleqr" class="btn-btn-danger" (click)="togglescn()">Return the cycle</button> -->
+
+    <div *ngIf="scn; then thenBlock "></div>
+<ng-template #thenBlock><app-qrscanner (sendcode)="addqr($event)"></app-qrscanner></ng-template>
+<!-- <ng-template #elseBlock><app-qrscanner (sendcode)="checkqr($event)"></app-qrscanner></ng-template> -->
+    
+</div>
+<!-- else elseBlock -->

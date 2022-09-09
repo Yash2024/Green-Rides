@@ -1,0 +1,29 @@
+<body>
+    <div class="wrapper">
+      <form action="#">
+        <input type="file" hidden>
+        <img src="#" alt="qr-code">
+        <div >
+          <h3>scan QR </h3>
+         
+          <ngx-scanner-qrcode #action="scanner" (data)="output = $event" (error)="onError($event)" style="width: 100px;"></ngx-scanner-qrcode>
+         
+          <!-- data  -->
+          <p class="data">{{ output }}</p>
+         
+          <!-- Loading -->
+          <p *ngIf="action.isLoading">⌛ Loading video...</p>
+         
+          <!-- toggleCamera -->
+          <button *ngIf="!output&&scnbtn" style="width: 100px; height: 50px;" (click)="action.toggleCamera(); remscanbtn()" class="btn-btn-primary btn-sm" [class.btn-info]="!action.isStart" [class.btn-warning]="action.isStart" [disabled]="action.isLoading">
+            press to scan
+            <img *ngIf="!action.isStart" src="https://img.icons8.com/ios/50/000000/no-camera--v2.png" width="30px"/>
+            <img *ngIf="action.isStart" src="https://img.icons8.com/ios/50/000000/no-camera--v1.png" width="30px"/>
+          </button>
+          <button *ngIf="output" (click)="addcode(); action.toggleCamera();" class="btn-btn-success btn-sm" >press to register code</button>
+        </div>
+    
+      </form>
+    </div>
+
+  </body>
